@@ -1,7 +1,7 @@
 {
   "name": "SullyGnome Helper",
   "description": "Easy linking to SullyGnome.com from Twitch",
-  "version": "0.1",
+  "version": "0.1.0",
   "permissions": [
 	"http://www.twitch.tv/*",
 	"https://www.twitch.tv/*"
