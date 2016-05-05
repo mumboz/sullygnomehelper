@@ -1,7 +1,7 @@
 {
   "name": "SullyGnome Helper",
   "description": "Easy linking to SullyGnome.com from Twitch",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "icons": { 
     "16": "icon-16.png",
 	"19": "icon-19.png",
