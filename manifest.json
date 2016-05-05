@@ -1,7 +1,13 @@
 {
   "name": "SullyGnome Helper",
   "description": "Easy linking to SullyGnome.com from Twitch",
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "icons": { 
+    "16": "icon-16.png",
+	"19": "icon-19.png",
+    "48": "icon-48.png",
+    "128": "icon-128.png" 
+  },
   "permissions": [
 	"http://www.twitch.tv/*",
 	"https://www.twitch.tv/*"
@@ -11,11 +17,11 @@
     "persistent": false
   },
   "browser_action": {
-	"default_icon": "icon.png",
-    "default_title": "Go to SullyGnome.com"
+	"default_icon": "icon-19.png",
+    "default_title": "SullyGnome Helper"
   },
   "web_accessible_resources": [
-	"icon.png"
+	"icon-19.png"
   ],
   "manifest_version": 2
 }

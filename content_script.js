@@ -14,7 +14,7 @@ function appendAfter(newNode, target)
 function createLink(url)
 {
 	var iconElement = document.createElement("IMG");
-	iconElement.src = chrome.extension.getURL("icon.png");
+	iconElement.src = chrome.extension.getURL("icon-19.png");
 	iconElement.alt = "Show on SullyGnome.com";
 	iconElement.title = "Show on SullyGnome.com";
 	
