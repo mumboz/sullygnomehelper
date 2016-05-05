@@ -26,36 +26,47 @@ function createLink(url)
 	return newAnchor;
 }
 
-var uri = document.documentURI;
-
-var channelElements = document.getElementsByClassName("channel");
-
-for (var i = 0; i < channelElements.length; ++i)
+function addLinksToDocument()
 {
-	var channelElement = channelElements[i];
+	var channelElements = document.getElementsByClassName("channel");
 
-	// Get "channel-name" divs and insert link to channel stats
-	var channelNameElements = channelElement.getElementsByClassName("channel-name");
-	for (var j = 0; j < channelNameElements.length; ++j)
-	{	
-		var chanNameElem = channelNameElements[j];
-		var chanName = chanNameElem.text;
-		
-		appendAfter(createLink("http://sullygnome.com/Channel/" + chanName), chanNameElem);
-	}
-	
-	// Look for game links and insert link to game stats
-	for (var j = 0; j < channelElement.children.length; ++j)
+	for (var i = 0; i < channelElements.length; ++i)
 	{
-		var child = channelElement.children[j];
-		if (child.nodeName == "A")
+		var channelElement = channelElements[i];
+
+		// Get "channel-name" divs and insert link to channel stats
+		var channelNameElements = channelElement.getElementsByClassName("channel-name");
+		for (var j = 0; j < channelNameElements.length; ++j)
+		{	
+			var chanNameElem = channelNameElements[j];
+			var chanName = chanNameElem.text;
+			
+			appendAfter(createLink("http://sullygnome.com/Channel/" + chanName), chanNameElem);
+		}
+		
+		// Look for game links and insert link to game stats
+		for (var j = 0; j < channelElement.children.length; ++j)
 		{
-			if (child.href.includes("/directory/game/"))
+			var child = channelElement.children[j];
+			if (child.nodeName == "A")
 			{
-				var gameName = child.text;
-				
-				appendAfter(createLink("http://sullygnome.com/Game/" + gameName), child);
+				if (child.href.includes("/directory/game/"))
+				{
+					var gameName = child.text;
+					
+					appendAfter(createLink("http://sullygnome.com/Game/" + gameName), child);
+				}
 			}
 		}
 	}
+}
+
+// Check for tag before adding links to prevent adding them multiple times
+var wasHereTag = document.getElementById("sullygnomehelperwashere");
+if (wasHereTag == null)
+{
+	addLinksToDocument();
+	var newWasHereTag = document.createElement("DIV");
+	newWasHereTag.id = "sullygnomehelperwashere";
+	document.body.appendChild(newWasHereTag);
 }

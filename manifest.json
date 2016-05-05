@@ -9,6 +9,7 @@
     "128": "icon-128.png" 
   },
   "permissions": [
+	"activeTab",
 	"http://www.twitch.tv/*",
 	"https://www.twitch.tv/*"
   ],
