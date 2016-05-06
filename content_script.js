@@ -21,7 +21,8 @@ function createLink(url)
 	var newAnchor = document.createElement("A");
 	newAnchor.appendChild(iconElement);
 	newAnchor.href = url;
-	newAnchor.target = "_blank";	
+	newAnchor.target = "_blank";
+	newAnchor.className = "sullygnomehelperlink";
 	
 	return newAnchor;
 }
@@ -40,7 +41,6 @@ function addLinksToDocument()
 		{	
 			var chanNameElem = channelNameElements[j];
 			var chanName = chanNameElem.text;
-			
 			appendAfter(createLink("http://sullygnome.com/Channel/" + chanName), chanNameElem);
 		}
 		
@@ -53,7 +53,6 @@ function addLinksToDocument()
 				if (child.href.includes("/directory/game/"))
 				{
 					var gameName = child.text;
-					
 					appendAfter(createLink("http://sullygnome.com/Game/" + gameName), child);
 				}
 			}
@@ -62,11 +61,8 @@ function addLinksToDocument()
 }
 
 // Check for tag before adding links to prevent adding them multiple times
-var wasHereTag = document.getElementById("sullygnomehelperwashere");
-if (wasHereTag == null)
+var existingLinks = document.getElementsByClassName("sullygnomehelperlink");
+if (existingLinks.length == 0)
 {
 	addLinksToDocument();
-	var newWasHereTag = document.createElement("DIV");
-	newWasHereTag.id = "sullygnomehelperwashere";
-	document.body.appendChild(newWasHereTag);
 }

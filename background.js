@@ -17,6 +17,7 @@ chrome.tabs.onActivated.addListener( function (activeInfo)
 		if (tabHasTwitchUrl(tab))
 		{
 			chrome.browserAction.enable();
+			chrome.tabs.executeScript(activeInfo.tabId, {file: "content_script.js"});
 		}
 		else
 		{
@@ -30,6 +31,6 @@ chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab)
 {
 	if (tabHasTwitchUrl(tab) && changeInfo.status == 'complete')
 	{
-		chrome.tabs.executeScript(null, {file: "content_script.js"});
+		chrome.tabs.executeScript(tabId, {file: "content_script.js"});
 	}
 })
