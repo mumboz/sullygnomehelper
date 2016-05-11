@@ -7,7 +7,7 @@ function tabHasTwitchUrl(tab)
 chrome.browserAction.onClicked.addListener(function (tab)
 {
 	chrome.tabs.executeScript(null, {file: "browser_action_clicked.js"});  
-})
+});
 
 
 chrome.tabs.onActivated.addListener( function (activeInfo) 
@@ -24,8 +24,8 @@ chrome.tabs.onActivated.addListener( function (activeInfo)
 		{
 			chrome.browserAction.disable();
 		}
-	})
-})
+	});
+});
 
 
 chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) 
@@ -35,4 +35,4 @@ chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab)
 		chrome.tabs.executeScript(tabId, {file: "jquery-2.2.3.min.js"});
 		chrome.tabs.executeScript(tabId, {file: "content_script.js"});
 	}
-})
+});
