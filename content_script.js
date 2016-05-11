@@ -29,7 +29,7 @@ function createLink(url)
 
 function addLinksToDocument()
 {
-	// Handle Channel pages
+	// Channel pages
 	var channelElements = document.getElementsByClassName("channel");
 	for (var i = 0; i < channelElements.length; ++i)
 	{
@@ -59,7 +59,7 @@ function addLinksToDocument()
 		}
 	}
 	
-	// Handle Directory pages
+	// Directory pages - page header
 	var jqTitleElement = $(".directory_header").find(".title");
 	if (jqTitleElement.length > 0)
 	{
@@ -67,16 +67,12 @@ function addLinksToDocument()
 		jqTitleElement.append(createLink("http://sullygnome.com/Game/" + gameName));
 	}
 	
-	/*var directoryHeaderElements = document.getElementsByClassName("directory_header");
-	for (var i = 0; i < directoryHeaderElements.length; ++i)
+	// Directory pages - channel names
+	$("p.title").find("[data-channel-link]").each( function()
 	{
-		var titleElements = directoryHeaderElements[i].getElementsByClassName("title");
-		for (var j = 0; j < titleElements.length; ++j)
-		{
-			var gameName = titleElements[j].childNodes[1].data;
-			titleElements[j].appendChild(createLink("http://sullygnome.com/Game/" + gameName));
-		}
-	}*/
+		var chanUrl = $(this).attr("href");
+		$(this).before(createLink("http://sullygnome.com/Channel" + chanUrl));	
+	});
 }
 
 // Check for tag before adding links to prevent adding them multiple times
